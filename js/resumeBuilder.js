@@ -12,7 +12,7 @@ var bio = {
 	"role" : "Front-End Web Developer",
 	"contacts": {
 		"email" : "snsimpson1202@gmail.com",
-		"location": "Springfield",
+		"local": "Springfield",
 		"github":"snsimpson1202"
 	},
 	"welcomeMessage" : "Hello, world!",
@@ -23,8 +23,19 @@ var bio = {
 	
 };
 
+var email = HTMLemail.replace("%data%", bio.contacts.email);
+$("#header").append(email); 
+var github = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#header").append(github);
+var local = HTMLlocation.replace("%data%", bio.contacts.local);
+$("#header").append(local);
+
 var bioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 $("#header").append(bioPic);
+
+var welcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#header").append(welcomeMessage);
+
 
 
 if(bio.skills.length > 0){
@@ -40,12 +51,53 @@ if(bio.skills.length > 0){
 
 
 
-var work = {};
-	work.employer = "Ashley House";
-	work.position = "Child Care Worker";
-	work.dates = "2013-current";
-	work.location = "Springfield, MO";
-	work.description = "Description goes here."
+var work = {
+	"jobs" : [
+		{
+			"employer" : "Ashley House",
+			"position" : "Child Care Worker",
+			"dates" : "2013-current",
+			"local" : "Springfield, MO",
+			"description" : "Description goes here."
+		},
+		{
+			"employer" : "Ashley House2",
+			"position" : "Child Care Worker",
+			"dates" : "2013-current",
+			"local" : "Springfield, MO",
+			"description" : "Description goes here."
+		},
+		{
+			"employer" : "Ashley House3",
+			"position" : "Child Care Worker",
+			"dates" : "2013-current",
+			"local" : "Springfield, MO",
+			"description" : "Description goes here."
+		}	
+	]
+};
+
+for (job in work["jobs"]){
+	console.log(work["jobs"][job].employer);
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job].employer);
+	$("#workExperience").append(formattedEmployer);
+	var formattedPosition = HTMLworkTitle.replace("%data%", work["jobs"][job].position);
+	$("#workExperience").append(formattedPosition);
+	
+	var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job].dates);
+	$("#workExperience").append(formattedDates);	
+	var formattedLocal = HTMLworkLocation.replace("%data%", work["jobs"][job].local);
+	$("#workExperience").append(formattedLocal);
+	var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job].description);
+	$("#workExperience").append(formattedDescription);
+
+	$(".work-entry:last").append(formattedEmployer + formattedPosition)
+
+}
+
+
 
 var projects = {
 	"projects": {
