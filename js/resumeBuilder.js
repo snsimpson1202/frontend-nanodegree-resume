@@ -17,18 +17,18 @@ var bio = {
 	},
 	"welcomeMessage" : "Hello, world!",
 	"skills" : [
-		"Quick learner", "Strong Communication Skills", "Awesome"
+		"HTML/CSS", "Javascript/JQuery", "Good communication skills"
 	],
 	"bioPic" : "images/placeholder.gif"
 	
 };
 
 var email = HTMLemail.replace("%data%", bio.contacts.email);
-$("#header").append(email); 
+$("#topContacts").append(email); 
 var github = HTMLgithub.replace("%data%", bio.contacts.github);
-$("#header").append(github);
+$("#topContacts").append(github);
 var local = HTMLlocation.replace("%data%", bio.contacts.local);
-$("#header").append(local);
+$("#topContacts").append(local);
 
 var bioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 $("#header").append(bioPic);
@@ -55,21 +55,21 @@ var work = {
 	"jobs" : [
 		{
 			"employer" : "Ashley House",
-			"position" : "Child Care Worker",
+			"title" : "Child Care Worker",
 			"dates" : "2013-current",
 			"local" : "Springfield, MO",
 			"description" : "Description goes here."
 		},
 		{
 			"employer" : "Ashley House2",
-			"position" : "Child Care Worker",
+			"title" : "Child Care Worker",
 			"dates" : "2013-current",
 			"local" : "Springfield, MO",
 			"description" : "Description goes here."
 		},
 		{
 			"employer" : "Ashley House3",
-			"position" : "Child Care Worker",
+			"title" : "Child Care Worker",
 			"dates" : "2013-current",
 			"local" : "Springfield, MO",
 			"description" : "Description goes here."
@@ -77,25 +77,30 @@ var work = {
 	]
 };
 
-for (job in work["jobs"]){
-	console.log(work["jobs"][job].employer);
+
+// iterates through work experience array and adds to page under HTMLworkStart	
+	for( var job = 0; job < work.jobs.length; job++ ){
 	$("#workExperience").append(HTMLworkStart);
 
+
 	var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job].employer);
-	$("#workExperience").append(formattedEmployer);
-	var formattedPosition = HTMLworkTitle.replace("%data%", work["jobs"][job].position);
-	$("#workExperience").append(formattedPosition);
-	
+	var formattedTitle = HTMLworkTitle.replace("%data%", work["jobs"][job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	$(".work-entry:last").append(formattedEmployerTitle);
+
 	var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job].dates);
-	$("#workExperience").append(formattedDates);	
+	$(".work-entry:last").append(formattedDates);	
 	var formattedLocal = HTMLworkLocation.replace("%data%", work["jobs"][job].local);
-	$("#workExperience").append(formattedLocal);
+	$(".work-entry:last").append(formattedLocal);
 	var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job].description);
-	$("#workExperience").append(formattedDescription);
+	$(".work-entry:last").append(formattedDescription);
+}	
 
-	$(".work-entry:last").append(formattedEmployer + formattedPosition)
 
-}
+
+
+
+
 
 
 
