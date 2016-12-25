@@ -23,6 +23,18 @@ var bio = {
 	
 };
 
+// used to capitalize first letter of first name and capitalize all letters of last name
+function inName(name){
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+	return name.join(" ");
+}
+
+$("#main").append(internationalizeButton);
+
+
 var email = HTMLemail.replace("%data%", bio.contacts.email);
 $("#topContacts").append(email); 
 var github = HTMLgithub.replace("%data%", bio.contacts.github);
@@ -79,8 +91,10 @@ var work = {
 
 
 // iterates through work experience array and adds to page under HTMLworkStart	
+
 	for( var job = 0; job < work.jobs.length; job++ ){
 	$("#workExperience").append(HTMLworkStart);
+
 
 
 	var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job].employer);
@@ -95,7 +109,6 @@ var work = {
 	var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job].description);
 	$(".work-entry:last").append(formattedDescription);
 }	
-
 
 
 
