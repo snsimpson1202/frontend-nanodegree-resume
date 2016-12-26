@@ -111,12 +111,6 @@ var work = {
 }	
 
 
-
-
-
-
-
-
 var projects = {
 	"projects": {
 		"title": "title goes here",
