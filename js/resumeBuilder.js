@@ -113,23 +113,58 @@ var work = {
 
 
 
-
-
-
-
 var projects = {
-	"projects": {
-		"title": "title goes here",
-		"date": "date goes here",
-		"description": "description goes here",
-		"image": "image goes here"
-	}
+	"projects": [
+		{
+			"title": "Project 1",
+			"dates": "date goes here",
+			"description": "description goes here",
+			"image": "image goes here"
+		},
+		{
+			"title": "Project 2",
+			"dates": "date goes here",
+			"description": "description goes here",
+			"image": "image goes here"
+		},
+		{
+			"title": "Project 3",
+			"dates": "date goes here",
+			"description": "description goes here",
+			"image": "image goes here"
+		}
+
+	]	
 };
 
-var education = {};
+	//projects.display = function() {
+		for(var project = 0; project < projects.projects.length; project++){
+		$("#projects").append(HTMLprojectStart); 
+
+		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		$(".project-entry:last").append(formattedProjectTitle);
+
+		var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		$(".project-entry:last").append(formattedProjectDates);
+
+		var formattedProjectDescription = HTMLprojectDescription.replace ("%data%", projects.projects[project].description);
+		$(".project-entry:last").append(formattedProjectDescription);
+
+		if(projects.projects[project].image.length > 0) {
+			for (var image = 0; image < projects.projects[image].image.length; image++){
+					var formattedProjectImage = HTMLprojectImage("%data%", projects.projects[project].image[image]);
+					$(".project-entry:last").append(formattedProjectImage);
+			}
+		}
+	//}	
+
+projects.display();
+
+
+/*var education = {};
 	education["name"] = "Missouri State University";
 	education["years"] = "Graduated 2014";
-	education["location"] = "Springfield, MO";
+	education["location"] = "Springfield, MO";*/
 
 var education = {
 	"schools": [
@@ -162,7 +197,8 @@ var education = {
 			"website": "Codecademy"
 		}
 	]
-}	
+}
+}
 
 
 
