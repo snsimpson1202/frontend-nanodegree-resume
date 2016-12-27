@@ -23,16 +23,6 @@ var bio = {
 	
 };
 
-// used to capitalize first letter of first name and capitalize all letters of last name
-function inName(name){
-	name = name.trim().split(" ");
-	console.log(name);
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-	return name.join(" ");
-}
-
-$("#main").append(internationalizeButton);
 
 
 var email = HTMLemail.replace("%data%", bio.contacts.email);
@@ -112,13 +102,49 @@ var work = {
 
 
 var projects = {
-	"projects": {
-		"title": "title goes here",
-		"date": "date goes here",
-		"description": "description goes here",
-		"image": "image goes here"
-	}
+	"projects": [
+		{
+			"title": "Project1",
+			"dates": "date goes here",
+			"description": "description goes here",
+			"images": "image goes here"
+		},
+		{
+			"title": "Project2",
+			"dates": "date goes here",
+			"description": "description goes here",
+			"images": "image goes here"
+		},
+		{
+			"title": "Project3",
+			"dates": "date goes here",
+			"description": "description goes here",
+			"images": "image goes here"
+		}	
+	]
 };
+
+projects.display = function(){
+	for(var project = 0; project < projects.projects.length; project++ ) {
+		$("#projects").append(HTMLprojectStart);
+
+		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		$(".project-entry:last").append(formattedProjectTitle);
+		var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		$(".project-entry:last").append(formattedProjectDates);
+		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		$(".project-entry:last").append(formattedProjectDescription);
+
+		if(projects.projects[project].images.length > 0){
+			for(var image = 0; image < projects.projects[project].images; image++){
+				var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+				$(".project-entry:last").append(formattedProjectImages);
+			}
+		}
+	}	
+}
+
+projects.display();
 
 var education = {};
 	education["name"] = "Missouri State University";
@@ -157,6 +183,20 @@ var education = {
 		}
 	]
 }	
+
+// adds a map
+$("#mapDiv").append(googleMap);
+
+// used to capitalize first letter of first name and capitalize all letters of last name
+function inName(name){
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+	return name.join(" ");
+}
+
+$("#main").append(internationalizeButton);
 
 
 
