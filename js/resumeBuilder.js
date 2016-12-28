@@ -154,14 +154,6 @@ var education = {};
 var education = {
 	"schools": [
 		{
-			"name": "Ozarks Technical Community College",
-			"location": "Springfield, MO",
-			"degree": "Associative of Arts",
-			"dates": "2009-2012",
-			"url": "http://otc.edu"
-
-		},
-		{
 			"name": "Missouri State University",
 			"location": "Springfield, MO",
 			"degree": "BS",
@@ -174,15 +166,110 @@ var education = {
 	"onlineCourses": [
 		{
 			"title": "CS50",
-			"school": "Harvard EdX",
-			"website": "EdX"
+			"school": "Harvard edX",
+			"url": "https://edx.org"
+		},
+		{
+			"title": "HTML5",
+			"school":"University Cote d'Azur",
+			"url": "https://edx.org"
 		},
 		{
 			"title": "Front-End Development",
-			"website": "Codecademy"
+			"school": "freecodecamp",
+			"url": "https://freecodecamp.com"
+		},
+		{
+			"title": "Javascript Basics",
+			"school": "Udacity",
+			"url": "http://udacity.com"
+
+		},
+		{
+			"title": "HTML & CSS",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title": "Javascript",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title": "jQuery",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title": "AngularJS 1.X",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title": "Learn Git",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title": "Learn Sass",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title": "Learn SQL",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
+		},
+		{
+			"title":"Ruby",
+			"school": "codecademy",
+			"url": "https://codecademy.com"
 		}
 	]
 }	
+
+education.display = function(){
+	if(education.schools.length > 0 || education.onlineCourses.length > 0) {
+		for( var school = 0; school < education.schools.length; school++){
+			$("#education").append(HTMLschoolStart);
+
+			var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+
+			var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name).replace("#", education.schools[school].url);
+			$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
+
+			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+			$(".education-entry:last").append(formattedSchoolLocation);
+
+			var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+			$(".education-entry:last").append(formattedDates);
+
+			var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+			$(".education-entry:last").append(formattedMajor);
+
+			var formattedMinor = HTMLschoolMinor.replace("%data%", education.schools[school].minor);
+			$(".education-entry:last").append(formattedMinor);
+
+		}	
+
+	if (education.onlineCourses.length > 0){
+		$("#education").append(HTMLonlineClasses);
+			for(var onlineCourse = 0; onlineCourse < education.onlineCourses.length; onlineCourse++){
+				$("#education").append(HTMLschoolStart);
+
+				var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+				
+				var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+				$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
+
+				var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url).replace("#", education.onlineCourses[onlineCourse].url);
+				$(".education-entry:last").append(formattedOnlineURL);
+			}
+		}
+	}	
+}
+
+education.display();
 
 // adds a map
 $("#mapDiv").append(googleMap);
