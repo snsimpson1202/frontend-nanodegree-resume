@@ -146,10 +146,6 @@ projects.display = function(){
 
 projects.display();
 
-var education = {};
-	education["name"] = "Missouri State University";
-	education["years"] = "Graduated 2014";
-	education["location"] = "Springfield, MO";
 
 var education = {
 	"schools": [
@@ -167,12 +163,17 @@ var education = {
 		{
 			"title": "CS50",
 			"school": "Harvard edX",
-			"url": "https://edx.org"
+			"url": "https://courses.edx.org/certificates/b6bf6a96818644cbbbfcffe87ab60caa"
 		},
 		{
-			"title": "HTML5",
+			"title": "HTML5 Part 1",
 			"school":"University Cote d'Azur",
-			"url": "https://edx.org"
+			"url": "https://courses.edx.org/certificates/798f087dd3ce48308c7a63b4c6986f46"
+		},
+		{
+			"title": "HTML5 Part 2",
+			"school": "University Cote d'Azur",
+			"url": "https://courses.edx.org/certificates/43321202f2e444c3a9342ed8865d3900"
 		},
 		{
 			"title": "Front-End Development",
@@ -259,11 +260,9 @@ education.display = function(){
 
 				var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
 				
-				var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+				var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title).replace("#", education.onlineCourses[onlineCourse].url);
 				$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
 
-				var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url).replace("#", education.onlineCourses[onlineCourse].url);
-				$(".education-entry:last").append(formattedOnlineURL);
 			}
 		}
 	}	
@@ -283,7 +282,8 @@ function inName(name){
 	return name.join(" ");
 }
 
-$("#main").append(internationalizeButton);
+// adds a button to fully capitalize the last name
+//$("#main").append(internationalizeButton);
 
 
 
