@@ -19,7 +19,7 @@ var bio = {
 	"skills" : [
 		"HTML/CSS", "Javascript/JQuery", "Good communication skills"
 	],
-	"bioPic" : "images/placeholder.gif"
+	"bioPic" : "http://res.cloudinary.com/sara-simpson-img/image/upload/c_scale,h_180,w_197/v1483022165/profile_hdhbvj.jpg"
 	
 };
 
@@ -38,7 +38,7 @@ $("#header").append(bioPic);
 var welcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 $("#header").append(welcomeMessage);
 
-
+// appends skills to the page
 
 if(bio.skills.length > 0){
 	$("#header").append(HTMLskillsStart);
@@ -51,7 +51,7 @@ if(bio.skills.length > 0){
 	$("#skills").append(formattedSkill);
 }
 
-
+// work Object
 
 var work = {
 	"jobs" : [
@@ -60,22 +60,9 @@ var work = {
 			"title" : "Child Care Worker",
 			"dates" : "2013-current",
 			"local" : "Springfield, MO",
-			"description" : "Description goes here."
-		},
-		{
-			"employer" : "Ashley House2",
-			"title" : "Child Care Worker",
-			"dates" : "2013-current",
-			"local" : "Springfield, MO",
-			"description" : "Description goes here."
-		},
-		{
-			"employer" : "Ashley House3",
-			"title" : "Child Care Worker",
-			"dates" : "2013-current",
-			"local" : "Springfield, MO",
-			"description" : "Description goes here."
-		}	
+			"description" : "Works with teenage girls in the foster care system to increase their independent living skills for life outside of the foster care system.",
+			"url": "http://missouri.pchas.org/transitional-living-program/"
+		}
 	]
 };
 
@@ -87,7 +74,7 @@ var work = {
 
 
 
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job].employer);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job].employer).replace("#", work["jobs"][job].url);
 	var formattedTitle = HTMLworkTitle.replace("%data%", work["jobs"][job].title);
 	var formattedEmployerTitle = formattedEmployer + formattedTitle;
 	$(".work-entry:last").append(formattedEmployerTitle);
@@ -100,6 +87,7 @@ var work = {
 	$(".work-entry:last").append(formattedDescription);
 }	
 
+// projects Object
 
 var projects = {
 	"projects": [
@@ -124,6 +112,8 @@ var projects = {
 	]
 };
 
+// displays projects
+
 projects.display = function(){
 	for(var project = 0; project < projects.projects.length; project++ ) {
 		$("#projects").append(HTMLprojectStart);
@@ -146,6 +136,7 @@ projects.display = function(){
 
 projects.display();
 
+// education object
 
 var education = {
 	"schools": [
@@ -229,6 +220,8 @@ var education = {
 	]
 }	
 
+// displays education section
+
 education.display = function(){
 	if(education.schools.length > 0 || education.onlineCourses.length > 0) {
 		for( var school = 0; school < education.schools.length; school++){
@@ -272,6 +265,11 @@ education.display();
 
 // adds a map
 $("#mapDiv").append(googleMap);
+
+// footer contacts
+
+var email = HTMLemail.replace("%data%", bio.contacts.email);
+$("#footerContacts").append(email); 
 
 // used to capitalize first letter of first name and capitalize all letters of last name
 function inName(name){
