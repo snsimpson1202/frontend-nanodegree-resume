@@ -59,7 +59,7 @@ var work = {
 			"employer" : "Ashley House",
 			"title" : "Child Care Worker",
 			"dates" : "2013-current",
-			"local" : "Springfield, MO",
+			"location" : "Springfield, MO",
 			"description" : "Works with teenage girls in the foster care system to increase their independent living skills for life outside of the foster care system.",
 			"url": "http://missouri.pchas.org/transitional-living-program/"
 		}
@@ -81,8 +81,8 @@ var work = {
 
 	var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job].dates);
 	$(".work-entry:last").append(formattedDates);	
-	var formattedLocal = HTMLworkLocation.replace("%data%", work["jobs"][job].local);
-	$(".work-entry:last").append(formattedLocal);
+	var formattedLocation = HTMLworkLocation.replace("%data%", work["jobs"][job].location);
+	$(".work-entry:last").append(formattedLocation);
 	var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job].description);
 	$(".work-entry:last").append(formattedDescription);
 }	
@@ -280,7 +280,7 @@ function inName(name){
 	return name.join(" ");
 }
 
-// adds a button to fully capitalize the last name
+// adds a button labeled internationalize = to fully capitalize the last name
 //$("#main").append(internationalizeButton);
 
 
